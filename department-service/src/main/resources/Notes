@@ -1,5 +1,5 @@
 Dependencies :
-Step 1 : web, Actuator, Discovery client
+Step 1 : web, Actuator, Discovery client , Spring-cloud-starter-config
 
 Step 2 : Main class -> @EnableDiscoveryClient
 
