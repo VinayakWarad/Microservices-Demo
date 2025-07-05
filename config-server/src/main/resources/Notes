@@ -1,0 +1,8 @@
+Step 1 : spring-cloud-starter-config
+
+Step 2 : @EnableConfigServer in mainclass
+
+Step 3 : resources>config folder -> where we can place all other MS related config
+service name and config file name here should be same with yaml extension
+
+Step 4 :
