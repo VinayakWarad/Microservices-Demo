@@ -1,0 +1,6 @@
+server:
+  port: 8088
+
+spring:
+  profiles:
+    active: native # This is look for config inside this MS and won't go to git
