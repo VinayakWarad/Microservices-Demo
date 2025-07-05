@@ -1,0 +1,9 @@
+
+
+Step 1 : web, Eureka client,
+
+Step 2 : main class - @EnableEurekaServer
+
+Step 3 : run ->  http://localhost:8761/
+
+

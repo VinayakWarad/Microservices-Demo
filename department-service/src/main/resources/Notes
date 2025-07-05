@@ -1,0 +1,10 @@
+Dependencies :
+Step 1 : web, Actuator, Discovery client
+
+Step 2 : Main class -> @EnableDiscoveryClient
+
+Step 3 : app.yaml
+service name
+url to connect to eureka server (Discovery) // Move this to config server later
+
+Step 4 :
