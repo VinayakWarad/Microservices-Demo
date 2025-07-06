@@ -17,7 +17,7 @@ step 1 : Emp service
 * @PostMapping("/addEmp") -> Using this API post employee details using below payload
 (Later we will fetch required emps based on dept we require)
 * http://localhost:8083/employee/addEmp
-Payload ->
+Employee list Payload ->
 [
 {"id":21,"departmentId":2,"name":"Vinayak-SSE","age": 29,"position":"SSE"},
 {"id":22,"departmentId":2,"name":"Vinayak-SE","age": 29,"position":"SE"},
@@ -37,6 +37,15 @@ Sample output for departmentId=2
 {"id": 21,"departmentId": 2,"name": "Vinayak-SSE","age": 29,"position": "SSE"},
  {"id": 22,"departmentId": 2,"name": "Vinayak-SE","age": 29, "position": "SE"}
 ]
+*******************************************************
+Employee payload :
+{
+"id":55,
+"departmentId":5,
+"name":"Antony-Arch",
+"age": 50,
+"position":"Architect"
+}
 
 ****************************************************************
 
