@@ -7,7 +7,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 # http://localhost:9411/zipkin/ -> Zipkin will be running here where logs can be monitored
-management:
-  tracing:
-    sampling:
-      probability: 1.0
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0

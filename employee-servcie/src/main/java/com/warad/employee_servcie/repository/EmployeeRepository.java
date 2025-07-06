@@ -16,6 +16,11 @@ public class EmployeeRepository {
         return employee;
     }
 
+    public List<Employee> saveEmployees(List<Employee> emp){
+        employees.addAll(emp);
+       return emp;
+    }
+
     public Employee findById(Long id) {
         return employees.stream()
                 .filter(a -> a.id().equals(id))

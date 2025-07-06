@@ -7,4 +7,33 @@ Step 3 : app.yaml
 service name
 url to connect to eureka server (Discovery) // Move this to config server later
 
-Step 4 :
+*************************************************************
+Microservice communication :
+
+Let's bring Eureka, Config, Department and Employee service up.
+We want to make webclient call from dept service to Employee service to fetch employees list working in speicific dept.
+
+step 1 : Emp service
+* @PostMapping("/addEmp") -> Using this API post employee details using below payload
+(Later we will fetch required emps based on dept we require)
+* http://localhost:8083/employee/addEmp
+Payload ->
+[
+{"id":21,"departmentId":2,"name":"Vinayak-SSE","age": 29,"position":"SSE"},
+{"id":22,"departmentId":2,"name":"Vinayak-SE","age": 29,"position":"SE"},
+{"id":31,"departmentId":3,"name":"Kiran-SME","age": 29,"position":"SME"},
+{"id":32,"departmentId":3,"name":"Kiran-SMESenior","age": 29,"position":"SMESenior"},
+{"id":41,"departmentId":4,"name":"Sangu-SE","age": 29,"position":"ARCH"}
+]
+
+step 2 : Dept Service
+*Below Endpoint is the one that does webclient call for us
+@GetMapping("/emps/{departmentId}")
+         public List<Employee> empsByDeptId(@PathVariable Long departmentId){ }
+* http://localhost:8082/department/emps/{departmentId}
+Sample output for departmentId=2
+
+[
+{"id": 21,"departmentId": 2,"name": "Vinayak-SSE","age": 29,"position": "SSE"},
+ {"id": 22,"departmentId": 2,"name": "Vinayak-SE","age": 29, "position": "SE"}
+]

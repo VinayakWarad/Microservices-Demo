@@ -1,6 +1,9 @@
 package com.warad.department_service.controller;
 
+import com.warad.department_service.DeptService;
+import com.warad.department_service.client.WebClientConfig;
 import com.warad.department_service.model.Department;
+import com.warad.department_service.model.Employee;
 import com.warad.department_service.repository.DepartmentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +23,7 @@ public class DepartmentController {
     private DepartmentRepository repository;
 
     @Autowired
-    private EmployeeClient employeeClient;
+    DeptService deptService;
 
     @PostMapping
     public Department add(@RequestBody Department department) {
@@ -40,15 +43,29 @@ public class DepartmentController {
         return repository.findById(id);
     }
 
-   @GetMapping("/with-employees")
-    public List<Department> findAllWithEmployees() {
-        LOGGER.info("Department find");
-        List<Department> departments
-                = repository.findAll();
-        departments.forEach(department ->
-                department.setEmployees(
-                        employeeClient.findByDepartment(department.getId())));
-        return  departments;
+/*
+ Example 1 : GET
+ From this dept service webclient call to emp service
+ Get all the employees working in specific department
+ pass deprtmentId as param
+*/
+    @GetMapping("/emps/{departmentId}")
+    public List<Employee> empsByDeptId(@PathVariable Long departmentId) {
+        List<Employee> list = deptService.getEmployeesByDepartmentId(departmentId);
+        for (Employee employee : list) {
+            System.out.println(employee.age());
+        }
+        return list;
     }
+
+/* Example 2 : POST
+ From this dept service webclient call to emp service
+ provide EMployee record to save Employee in Employee service*/
+    @PostMapping("/emps")
+    public Employee saveEmployee(@RequestBody Employee employee) {
+        Employee emp = deptService.saveEmp(employee);
+        return emp;
+    }
+
 
 }

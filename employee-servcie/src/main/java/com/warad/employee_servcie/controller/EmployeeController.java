@@ -18,11 +18,17 @@ import java.util.List;
         @Autowired
         EmployeeRepository repository;
 
-        @PostMapping
+        @PostMapping("/")
         public Employee add(@RequestBody Employee employee) {
             LOGGER.info("Employee add: {}", employee);
             return repository.add(employee);
         }
+        @PostMapping("/addEmps")
+        public List<Employee> addAll(@RequestBody List<Employee> employee) {
+            LOGGER.info("Employee add: {}", employee);
+            return repository.saveEmployees(employee);
+        }
+
 
         @GetMapping
         public List<Employee> findAll() {
