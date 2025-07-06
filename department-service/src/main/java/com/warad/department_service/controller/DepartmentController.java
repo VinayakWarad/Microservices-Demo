@@ -52,20 +52,23 @@ public class DepartmentController {
     @GetMapping("/emps/{departmentId}")
     public List<Employee> empsByDeptId(@PathVariable Long departmentId) {
         List<Employee> list = deptService.getEmployeesByDepartmentId(departmentId);
-        for (Employee employee : list) {
-            System.out.println(employee.age());
-        }
         return list;
     }
 
 /* Example 2 : POST
  From this dept service webclient call to emp service
  provide EMployee record to save Employee in Employee service*/
-    @PostMapping("/emps")
+    @PostMapping("/emp")
     public Employee saveEmployee(@RequestBody Employee employee) {
         Employee emp = deptService.saveEmp(employee);
         return emp;
     }
 
+    @GetMapping("/emp/{id}")
+    public Employee getJsonEmployee(@PathVariable Long id) {
+        System.out.println("Emp Id entered"+id);
+        Employee empJsonStr = deptService.getEmpJson(id);
+        return empJsonStr;
+    }
 
 }

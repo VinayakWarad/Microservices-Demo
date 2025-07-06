@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class EmployeeRepository {
@@ -26,6 +27,13 @@ public class EmployeeRepository {
                 .filter(a -> a.id().equals(id))
                 .findFirst()
                 .orElseThrow();
+    }
+    public Employee findByJsonId(Long id) {
+        Employee emps=employees.stream()
+                .filter(a -> a.id().equals(id))
+                .findFirst().orElseThrow();
+        return emps;
+
     }
 
     public List<Employee> findAll() {

@@ -37,3 +37,24 @@ Sample output for departmentId=2
 {"id": 21,"departmentId": 2,"name": "Vinayak-SSE","age": 29,"position": "SSE"},
  {"id": 22,"departmentId": 2,"name": "Vinayak-SE","age": 29, "position": "SE"}
 ]
+
+****************************************************************
+
+ .bodyToMono(String.class) ->
+
+String.class when you manually want to parse the response else you can
+directly use Employee.class i,e directly parsing the Json response
+to employee.class will happen and you don't need to use below mapper logic
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(jsonStr, Employee.class);
+
+****************************************************************
+
+.header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+HttpHeaders.ACCEPT -> Denotes what is response it accepts
+
+.contentType(MediaType.APPLICATION_JSON) -> Sets request body format
+
+***************************************************************
+

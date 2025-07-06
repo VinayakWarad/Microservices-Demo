@@ -5,6 +5,8 @@ import com.warad.employee_servcie.repository.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,11 +26,10 @@ import java.util.List;
             return repository.add(employee);
         }
         @PostMapping("/addEmps")
-        public List<Employee> addAll(@RequestBody List<Employee> employee) {
-            LOGGER.info("Employee add: {}", employee);
-            return repository.saveEmployees(employee);
+        public List<Employee> addAll(@RequestBody List<Employee> employees) {
+            LOGGER.info("Employees add: {}", employees);
+            return repository.saveEmployees(employees);
         }
-
 
         @GetMapping
         public List<Employee> findAll() {
@@ -40,6 +41,13 @@ import java.util.List;
         public Employee findById(@PathVariable("id") Long id) {
             LOGGER.info("Employee find: id={}", id);
             return repository.findById(id);
+        }
+
+        @GetMapping("/json/{id}")
+        public ResponseEntity<Employee> findByJsonId(@PathVariable("id") Long id) {
+            LOGGER.info("Employee find: id={}", id);
+
+            return new ResponseEntity(repository.findByJsonId(id), HttpStatus.OK);
         }
 
         @GetMapping("/department/{departmentId}")

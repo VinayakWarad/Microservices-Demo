@@ -9,4 +9,6 @@ public interface DeptService {
 List<Employee> getEmployeesByDepartmentId(Long deptId);
 
     Employee saveEmp(Employee employee);
+
+    Employee getEmpJson(Long id);
 }
